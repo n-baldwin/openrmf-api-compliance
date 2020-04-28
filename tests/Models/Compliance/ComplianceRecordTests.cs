@@ -9,30 +9,33 @@ namespace tests.Models
         [Fact]
         public void Test_NewComplianceRecordIsValid()
         {
-            ComplianceRecord cr = new ComplianceRecord();
-            Assert.True(cr != null);
+            ComplianceRecord complianceRecord = new ComplianceRecord();
+
+            // Testing
+            Assert.False(complianceRecord == null);
         }
     
         [Fact]
         public void Test_ComplianceRecordWithDataIsValid()
         {
-            ComplianceRecord cr = new ComplianceRecord();
-            cr.artifactId = "23423423423423423423";
-            cr.title = "mytitle";
-            cr.stigType = "Google Chrome";
-            cr.stigRelease = "Version 1";
-            cr.status = "valid";
-            cr.hostName = "myHost";
-            cr.updatedOn = DateTime.Now;
-            // test things out
-            Assert.True(cr != null);
-            Assert.True (!string.IsNullOrEmpty(cr.artifactId));
-            Assert.True (!string.IsNullOrEmpty(cr.title));
-            Assert.True (!string.IsNullOrEmpty(cr.stigType));
-            Assert.True (!string.IsNullOrEmpty(cr.stigRelease));
-            Assert.True (!string.IsNullOrEmpty(cr.status));
-            Assert.True (!string.IsNullOrEmpty(cr.hostName));
-            Assert.True (!string.IsNullOrEmpty(cr.updatedOn.ToShortDateString()));
+            ComplianceRecord complianceRecord = new ComplianceRecord();
+            
+            complianceRecord.artifactId = "23423423423423423423";
+            complianceRecord.title = "mytitle";
+            complianceRecord.stigType = "Google Chrome";
+            complianceRecord.stigRelease = "Version 1";
+            complianceRecord.status = "valid";
+            complianceRecord.hostName = "myHost";
+            complianceRecord.updatedOn = DateTime.Now;
+
+            // Testing
+            Assert.True(complianceRecord.artifactId == "23423423423423423423");
+            Assert.True(complianceRecord.title == "mytitle");
+            Assert.True(complianceRecord.stigType == "Google Chrome");
+            Assert.True(complianceRecord.stigRelease == "Version 1");
+            Assert.True(complianceRecord.status == "valid");
+            Assert.True(complianceRecord.hostName == "myHost");
+            Assert.False(complianceRecord.updatedOn == null);
         }
     }
 }

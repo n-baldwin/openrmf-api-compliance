@@ -8,38 +8,46 @@ namespace tests.Models
         [Fact]
         public void Test_NewCciItemIsValid()
         {
-            CciItem cci = new CciItem();
-            Assert.True(cci != null);
-            Assert.True(cci.references != null);
-            Assert.True(cci.references.Count == 0);
+            CciItem cciItem = new CciItem();
+
+            // Testing
+            Assert.False(cciItem == null);
         }
     
         [Fact]
         public void Test_CciItemWithDataIsValid()
         {
-            CciItem cci = new CciItem();
-            cci.cciId = "cciId";
-            cci.status = "status";
-            cci.publishDate = "mydate";
-            cci.contributor = "mycontributor";
-            cci.definition = "mydefinition";
-            cci.type = "mytype";
-            cci.parameter = "param1";
-            cci.note = "mynote";
-            CciReference ccir = new CciReference();
-            ccir.creator = "me";
-            ccir.title = "mytitle";
-            ccir.version = "v1";
-            ccir.location = "mylocation";
-            ccir.index = "2.3";
-            ccir.majorControl = "AC-2";
-            cci.references.Add(ccir);
+            CciItem cciItem = new CciItem();
+            
+            cciItem.cciId = "cciId";
+            cciItem.status = "status";
+            cciItem.publishDate = "mydate";
+            cciItem.contributor = "mycontributor";
+            cciItem.definition = "mydefinition";
+            cciItem.type = "mytype";
+            cciItem.parameter = "param1";
+            cciItem.note = "mynote";
 
-            // test things out
-            Assert.True(cci != null);
-            Assert.True(cci.references != null);
-            Assert.True(cci.references.Count == 1);
-            Assert.True(cci.references[0] != null);
+            CciReference cciReference = new CciReference();
+
+            cciReference.creator = "me";
+            cciReference.title = "mytitle";
+            cciReference.version = "v1";
+            cciReference.location = "mylocation";
+            cciReference.index = "2.3";
+            cciReference.majorControl = "AC-2";
+            cciItem.references.Add(cciReference);
+
+            // Testing
+            Assert.True(cciItem.cciId == "cciId");
+            Assert.True(cciItem.status == "status");
+            Assert.True(cciItem.publishDate == "mydate");
+            Assert.True(cciItem.contributor == "mycontributor");
+            Assert.True(cciItem.definition == "mydefinition");
+            Assert.True(cciItem.type == "mytype");
+            Assert.True(cciItem.parameter == "param1");
+            Assert.True(cciItem.note == "mynote");
+            Assert.True(cciItem.references.Count == 1);
         }
     }
 }

@@ -9,38 +9,41 @@ namespace tests.Models
         [Fact]
         public void Test_NewControlSetIsValid()
         {
-            ControlSet cs = new ControlSet();
-            Assert.True(cs != null);
+            ControlSet controlSet = new ControlSet();
+            
+            // Testing
+            Assert.False(controlSet == null);
         }
     
         [Fact]
         public void Test_ControlSetWithDataIsValid()
         {
-            ControlSet cs = new ControlSet();
-            cs.id = Guid.NewGuid();
-            cs.family = "Program Management";
-            cs.number = "PM-12";
-            cs.title = "Program Mgmt Title";
-            cs.priority = "P1";
-            cs.lowimpact = true;
-            cs.moderateimpact = true;
-            cs.highimpact = false;
-            cs.supplementalGuidance = "My supplemental text";
-            cs.subControlDescription = "my description";
-            cs.subControlNumber = "1.1.1.1.1";
-            // test things out
-            Assert.True(cs != null);
-            Assert.True (!string.IsNullOrEmpty(cs.family));
-            Assert.True (!string.IsNullOrEmpty(cs.number));
-            Assert.True (!string.IsNullOrEmpty(cs.title));
-            Assert.True (!string.IsNullOrEmpty(cs.priority));
-            Assert.True (!string.IsNullOrEmpty(cs.supplementalGuidance));
-            Assert.True (!string.IsNullOrEmpty(cs.subControlDescription));
-            Assert.True (!string.IsNullOrEmpty(cs.subControlNumber));
-            Assert.True (cs.lowimpact);
-            Assert.True (cs.moderateimpact);
-            Assert.False (cs.highimpact);
-            Assert.True (Guid.Empty != cs.id); // it is not empty
+            ControlSet controlSet = new ControlSet();
+
+            controlSet.id = Guid.NewGuid();
+            controlSet.family = "Program Management";
+            controlSet.number = "PM-12";
+            controlSet.title = "Program Mgmt Title";
+            controlSet.priority = "P1";
+            controlSet.lowimpact = true;
+            controlSet.moderateimpact = true;
+            controlSet.highimpact = false;
+            controlSet.supplementalGuidance = "My supplemental text";
+            controlSet.subControlDescription = "my description";
+            controlSet.subControlNumber = "1.1.1.1.1";
+
+            // Testing
+            Assert.True(controlSet.family == "Program Management");
+            Assert.True(controlSet.number == "PM-12");
+            Assert.True(controlSet.title == "Program Mgmt Title");
+            Assert.True(controlSet.priority == "P1");
+            Assert.True(controlSet.supplementalGuidance == "My supplemental text");
+            Assert.True(controlSet.subControlDescription == "my description");
+            Assert.True(controlSet.subControlNumber == "1.1.1.1.1");
+            Assert.True(controlSet.lowimpact);
+            Assert.True(controlSet.moderateimpact);
+            Assert.False(controlSet.highimpact);
+            Assert.False(controlSet.id == null);
         }
     }
 }

@@ -9,44 +9,44 @@ namespace tests.Models
         [Fact]
         public void Test_NewNISTComplianceIsValid()
         {
-            NISTCompliance nc = new NISTCompliance();
-            Assert.True(nc != null);
-            Assert.True(nc.complianceRecords.Count == 0);
+            NISTCompliance nistCompliance = new NISTCompliance();
+
+            // Testing
+            Assert.False(nistCompliance == null);
         }
     
         [Fact]
         public void Test_NISTComplianceWithDataIsValid()
         {
-            NISTCompliance nc = new NISTCompliance();
-            nc.control = "AC-1";
-            nc.index = "1.2";
-            nc.title = "My Title here";
-            nc.version = "23333";
-            nc.location = "this location";
-            nc.CCI = "34234234234";
-            nc.sortString = "AC-01";
+            NISTCompliance nistCompliance = new NISTCompliance();
+            nistCompliance.control = "AC-1";
+            nistCompliance.index = "1.2";
+            nistCompliance.title = "My Title here";
+            nistCompliance.version = "23333";
+            nistCompliance.location = "this location";
+            nistCompliance.CCI = "34234234234";
+            nistCompliance.sortString = "AC-01";
 
-            ComplianceRecord cr = new ComplianceRecord();
-            cr.artifactId = "23423423423423423423";
-            cr.title = "mytitle";
-            cr.stigType = "Google Chrome";
-            cr.stigRelease = "Version 1";
-            cr.status = "valid";
-            cr.hostName = "myHost";
-            cr.updatedOn = DateTime.Now;
+            ComplianceRecord complianceRecord = new ComplianceRecord();
+            complianceRecord.artifactId = "23423423423423423423";
+            complianceRecord.title = "mytitle";
+            complianceRecord.stigType = "Google Chrome";
+            complianceRecord.stigRelease = "Version 1";
+            complianceRecord.status = "valid";
+            complianceRecord.hostName = "myHost";
+            complianceRecord.updatedOn = DateTime.Now;
 
-            nc.complianceRecords.Add(cr);
-            // test things out
-            Assert.True(nc != null);
-            Assert.True (!string.IsNullOrEmpty(nc.control));
-            Assert.True (!string.IsNullOrEmpty(nc.index));
-            Assert.True (!string.IsNullOrEmpty(nc.title));
-            Assert.True (!string.IsNullOrEmpty(nc.version));
-            Assert.True (!string.IsNullOrEmpty(nc.location));
-            Assert.True (!string.IsNullOrEmpty(nc.CCI));
-            Assert.True(nc.complianceRecords.Count == 1);
-            // test one of the items in the list record
-            Assert.True (!string.IsNullOrEmpty(nc.complianceRecords[0].artifactId));
+            nistCompliance.complianceRecords.Add(complianceRecord);
+
+            // Testing
+            Assert.True(nistCompliance.control == "AC-1");
+            Assert.True(nistCompliance.index == "1.2");
+            Assert.True(nistCompliance.title == "My Title here");
+            Assert.True(nistCompliance.version == "23333");
+            Assert.True(nistCompliance.location == "this location");
+            Assert.True(nistCompliance.CCI == "34234234234");
+            Assert.True(nistCompliance.complianceRecords.Count == 1);
+            Assert.True(nistCompliance.sortString == "AC-01");
         }
     }
 }
